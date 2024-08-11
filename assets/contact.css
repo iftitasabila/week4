@@ -1,0 +1,121 @@
+/* ====== */
+body{
+    margin: 0;
+}
+
+nav{
+    background-color: rgb(241, 232, 215);
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .left{
+    display: flex;
+    align-items: center;
+  }
+  
+  .left ul{
+    display: flex;
+  }
+  
+  .left ul li {
+    list-style-type: none;
+    padding: 10px;
+  }
+  
+  .left ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+    position: relative;
+    left: 30px;
+  }
+  
+  .right {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+  }
+ 
+  .right a {
+    padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: black;
+  text-decoration: none;
+  color: wheat;
+  font-weight: 700;
+  }
+  
+  
+  
+  
+  
+  /* formulir */
+
+
+  form{
+    width: 300px;
+    margin: 50px auto;
+  }
+  
+  input, select, textarea{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(194, 168, 168);
+  }
+  
+  textarea{
+    resize: vertical;
+  }
+  
+  form div{
+    margin-bottom: 15px;
+  }
+  
+  form label{
+    font-weight: 500;
+  }
+  
+  form button{
+    padding: 8px 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+  }
+  
+  form button:hover{
+    transition: 0.5s;
+  }
+
+  form .subject-option{
+    display: flex;
+    
+    
+  }
+
+  .column{
+    display: flex;
+    column-gap: 15px;
+  }
+
+  .flex-icon{
+    width: 70%;
+    margin-right: 30%;
+    display: flexbox;
+    
+  }
+
+
+  .flex-icon label{
+    display: flex;
+    width: 50%;
+    padding-right: 50%;
+    margin-bottom: 30%;
+
+  }

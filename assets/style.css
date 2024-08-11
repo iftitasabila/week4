@@ -1,0 +1,92 @@
+
+/* post blog */
+.new-page {
+    height: 100%;
+    margin-top: -10px;
+    padding-bottom: 50px;
+    background-color: white; 
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.new-title{
+    margin-top: 10%;
+    padding-top: 30px;
+    background-color: white;
+}
+
+.card {
+    width: 30%;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 9px gray;  
+}
+
+.card img {
+    width: 100%;
+    max-height: 50%;
+    border-radius: 10px 10px 0 0;
+}
+
+.card h1 {
+    font-size: 30px;
+    margin: 20px 20px -10px 15px;
+}
+
+.card p {
+    font-size: 15px;
+    margin: 20px 20px 15px 15px;
+    text-align: justify;
+}
+
+.card .image-card {
+    width: 8%;
+    display: flex;
+    margin: 10px 15px 15px 15px;
+}
+
+.card .button-card {
+    display: flex;
+    justify-content: center;
+}
+
+.card .button-card .edit-card{
+    width: 50%;
+    text-align: center;
+    text-decoration: none;
+    margin: 7px;
+    margin-left: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+}
+
+.card .button-card .delete-card{
+    width: 50%;
+    margin: 7px;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+}
+/* post blog end */
+
+
+/* card jg */
+.container {
+    display: flex; 
+    flex-direction: row; 
+    padding: 50px;
+}
+
