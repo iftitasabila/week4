@@ -51,29 +51,27 @@ app.use(
 
 app.use((req, res, next) =>{
     res.locals.isLogin = req.session.isLogin
+    next()
 })
 
 app.use(flash());
 
 //route
-app.get('/', function(req, res){
-    res.send("hello")
-})
-// app.get('/', renderIndex)
-// app.get('/contact', renderContact)
-// app.get('/project', renderProject)
-// app.get('/testimonials', renderTestimonials)
-// app.get("/project-detail/:blog_id", renderProjectDetail);
-// app.get("/edit/:blog_id", renderEditProject); //buat di project-edit.hbs
-// app.get("/delete/:blog_id", renderDeleteProject);
-// app.get("/login", loginView);
-// app.get("/register", registerView);
+app.get('/', renderIndex)
+app.get('/contact', renderContact)
+app.get('/project', renderProject)
+app.get('/testimonials', renderTestimonials)
+app.get("/project-detail/:blog_id", renderProjectDetail);
+app.get("/edit/:blog_id", renderEditProject); //buat di project-edit.hbs
+app.get("/delete/:blog_id", renderDeleteProject);
+app.get("/login", loginView);
+app.get("/register", registerView);
 
-// app.post("/project", storage.single('image'), addProject)
-// app.post("/edit/:blog_id", storage.single('image'), editProject)// buat di project.hbs
-// app.post("/login", login);
-// app.post("/register", register);
-// app.post("/logout", logout);
+app.post("/project", storage.single('image'), addProject)
+app.post("/edit/:blog_id", storage.single('image'), editProject)// buat di project.hbs
+app.post("/login", login);
+app.post("/register", register);
+app.get("/logout", logout);
 
 // ========== LOGIN ========== //
 function loginView(req, res) {
@@ -83,7 +81,9 @@ function loginView(req, res) {
 async function login(req, res) {
     const { email, password } = req.body;
     
-
+    const query = `SELECT * FROM users WHERE email = $1`
+    console.log("ini data server", email, password);
+    
 
     const user = await sequelize.query( query, {
         type: QueryTypes.SELECT,
@@ -94,23 +94,28 @@ async function login(req, res) {
         req.flash("danger", "Email is not found!");
         return res.redirect("/login");
     }
+    const users = user[0]
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, users.password);
 
     if (!isPasswordValid) {
         req.flash("danger", "Password is wrong!");
         return res.redirect("/login");
     }
 
+    req.session.user = user[0]
     req.session.isLogin = true;
-    req.session.user = {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-    };
+    req.session.save((err) => {
+        if(err) {
+            console.log(err)
+            return res.redirect("/login")
+        }
+        req.flash("success", "Login berhasil!");
+        res.redirect("/");
+        
+    })
+    
 
-    req.flash("success", "Login berhasil!");
-    res.redirect("/");
 }
 //==============================//
 //========== REGISTER ==========//

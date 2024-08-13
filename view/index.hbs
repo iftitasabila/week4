@@ -45,7 +45,9 @@
             </li>
           </ul>
             <a class="btn btn-danger" href="/contact">Contact Me</a>
-          </form>
+            {{#if isLogin}}
+            <a class="btn btn-dark" href="/logout">Log Out</a>
+            {{/if}}
         </div>
       </div>
     </nav>
